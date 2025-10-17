@@ -60,13 +60,15 @@
     .envelope.open .env-flap{transform:rotateX(-180deg);pointer-events:auto}
     .envelope.open .seal{transform:scale(.4) translateY(-10px);opacity:0}
     .envelope.open .card{transform:translate(-50%,-120%) translateZ(0) scale(1.02);opacity:1}
+    
 
     /* 初始卡片位置（藏在信封裡） */
     .card{opacity:0}
 
     /* 小提示按鈕 */
-    .controls{margin-top:18px;display:flex;gap:10px}
-    button{background:#fff;border:1px solid rgba(0,0,0,0.06);padding:8px 14px;border-radius:10px;cursor:pointer;box-shadow:0 6px 16px rgba(16,24,40,0.06)}
+    /* .controls{margin-top:18px;display:flex;gap:10px} */
+    button{background:#e9f0ff;border:1px solid rgba(233, 240, 255,0);}
+    
 
     /* 飄浮的氣球裝飾 */
     .decor{position:fixed;right:20px;bottom:20px;display:flex;gap:10px;opacity:.95}
@@ -93,20 +95,20 @@
           <div class="triangle"></div>
         </div>
 
-        <div class="seal" id="seal">❤</div>
+        <div class="seal" id="seal">⭐</div>
 
         <div class="card" id="card">
           <div class="spark">✨</div>
-          <h1 id="toName">生日快樂，親愛的你！</h1>
-          <p id="message">願你每一天都閃閃發亮 — 健康、喜悅與驚喜常伴左右。</p>
+          <h1 id="toName">生日快樂，呂亦茹！</h1>
+          <p id="message">突發奇想想到就開始做了~一直在想有沒有可以特別一點的生日卡片哈哈，是說除了這個我還有準備你的生日禮物，抱歉沒辦法參加你的生日餐:/  最後在祝你一次生日快樂!<br>天天開心~</p>
         </div>
       </div>
     </div>
 
     <div class="controls">
-      <button id="btnOpen">打開 / 關閉</button>
-      <button id="btnEdit">自訂祝福</button>
-      <button id="btnDownload">下載 HTML 檔</button>
+      <button id="btnOpen"></button>
+      <button id="btnEdit"></button>
+      <button id="btnDownload"></button>
     </div>
  
   </div>
@@ -138,25 +140,25 @@
     });
 
     // 自訂訊息
-    btnEdit.addEventListener('click', ()=>{
-      const name = prompt('要送給誰？(輸入顯示名稱，空白則保留預設)','');
-      if(name !== null && name.trim()!=='') toName.textContent = `生日快樂，${name}！`;
-      const txt = prompt('要顯示的祝福語（可留空）', message.textContent);
-      if(txt !== null) message.textContent = txt;
-    });
+    //btnEdit.addEventListener('click', ()=>{
+      //const name = prompt('要送給誰？(輸入顯示名稱，空白則保留預設)','');
+      //if(name !== null && name.trim()!=='') toName.textContent = `生日快樂，${name}！`;
+      //const txt = prompt('要顯示的祝福語（可留空）', message.textContent);
+      //if(txt !== null) message.textContent = txt;
+    //});
 
     // 下載 HTML 檔（使用目前內容）
-    btnDownload.addEventListener('click', ()=>{
-      const html = `<!doctype html>\n<html lang=\"zh-Hant\">\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<title>電子生日卡片</title>\n<style>/* minimal inline styles copied from original */</style>\n<body>\n<div style=\"padding:20px;max-width:640px;margin:auto\">${env.outerHTML}</div>\n</body>\n</html>`;
-      const blob = new Blob([html],{type:'text/html;charset=utf-8'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url; a.download = 'birthday_card.html'; document.body.appendChild(a); a.click(); a.remove();
-      URL.revokeObjectURL(url);
-    });
+    //btnDownload.addEventListener('click', ()=>{
+      //const html = `<!doctype html>\n<html lang=\"zh-Hant\">\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<title>電子生日卡片</title>\n<style>/* minimal inline styles copied from original */</style>\n<body>\n<div style=\"padding:20px;max-width:640px;margin:auto\">${env.outerHTML}</div>\n</body>\n</html>`;
+      //const blob = new Blob([html],{type:'text/html;charset=utf-8'});
+      //const url = URL.createObjectURL(blob);
+      //const a = document.createElement('a');
+      //a.href = url; a.download = 'birthday_card.html'; document.body.appendChild(a); a.click(); a.remove();
+      //URL.revokeObjectURL(url);
+    //});
 
     // 快捷鍵 O 開啟/關閉
-    window.addEventListener('keydown', (e)=>{if(e.key.toLowerCase()==='o')toggleEnvelope()});
+    //window.addEventListener('keydown', (e)=>{if(e.key.toLowerCase()==='o')toggleEnvelope()});
   </script>
 </body>
 </html>
